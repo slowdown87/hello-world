@@ -69,16 +69,21 @@
             font-size: 5rem;
             font-weight: 700;
             font-family: 'Playfair Display', serif;
+            white-space: nowrap;
+            pointer-events: none;
+            display: none;
+            z-index: 9999;
+        }
+
+        .ribbon-text span {
+            display: inline-block;
             background: linear-gradient(135deg, #6366f1 0%, #f43f5e 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-fill-color: transparent;
-            white-space: nowrap;
             text-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
-            pointer-events: none;
-            display: none;
-            z-index: 9999;
+            transform-origin: center bottom;
             animation: glow 2s ease-in-out infinite alternate;
         }
 
@@ -108,11 +113,25 @@
         <button class="btn" id="clickBtn">点击我</button>
     </div>
     
-    <div class="ribbon-text" id="ribbonText">Hello World!</div>
+    <div class="ribbon-text" id="ribbonText">
+        <span>H</span>
+        <span>e</span>
+        <span>l</span>
+        <span>l</span>
+        <span>o</span>
+        <span> </span>
+        <span>W</span>
+        <span>o</span>
+        <span>r</span>
+        <span>l</span>
+        <span>d</span>
+        <span>!</span>
+    </div>
 
     <script>
         const btn = document.getElementById('clickBtn');
         const ribbonText = document.getElementById('ribbonText');
+        const letters = ribbonText.querySelectorAll('span');
         let isVisible = false;
         let animationFrame = null;
 
@@ -140,13 +159,29 @@
             const x = Math.sin(currentTime * 0.3) * (window.innerWidth / 2 - 150) + window.innerWidth / 2;
             const y = Math.cos(currentTime * 0.3) * (window.innerHeight / 2 - 150) + window.innerHeight / 2;
             
-            // 旋转和缩放，保持字体稳定
+            // 旋转和缩放
             const rotate = Math.sin(currentTime * 0.8) * 30;
             const scale = 1 + Math.sin(currentTime * 0.5) * 0.2;
 
+            // 为每个字符添加波浪动画，模拟旗帜效果
+            letters.forEach((letter, index) => {
+                // 不同字符有不同的相位，形成波浪效果
+                const wavePhase = index * 0.2;
+                const waveAmplitude = 15;
+                const waveFrequency = 2;
+                
+                // 上下波浪运动
+                const yOffset = Math.sin(currentTime * waveFrequency + wavePhase) * waveAmplitude;
+                
+                // 前后摇摆效果
+                const rotateX = Math.sin(currentTime * waveFrequency + wavePhase) * 20;
+                
+                letter.style.transform = `translateY(${yOffset}px) rotateX(${rotateX}deg)`;
+            });
+
             ribbonText.style.left = x + 'px';
             ribbonText.style.top = y + 'px';
-            ribbonText.style.transform = 'translate(-50%, -50%) rotate(' + rotate + 'deg) scale(' + scale + ')';
+            ribbonText.style.transform = `translate(-50%, -50%) rotate(${rotate}deg) scale(${scale})`;
 
             animationFrame = requestAnimationFrame(animate);
         }
