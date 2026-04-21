@@ -1,57 +1,86 @@
-# React + TypeScript + Vite
+# Hello World 飘带动画网站
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+一个简单而美观的静态网站，点击按钮后会显示飘带效果的"Hello World!"文字动画。
 
-Currently, two official plugins are available:
+## ✨ 功能特点
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🎨 现代简洁的UI设计
+- 🎭 流畅的飘带动画效果
+- 📱 响应式布局，适配不同屏幕尺寸
+- 🚀 已部署到GitHub Pages
 
-## Expanding the ESLint configuration
+## 🚀 访问网站
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+网站已成功部署到GitHub Pages，您可以通过以下链接访问：
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+[https://slowdown87.github.io/hello-world](https://slowdown87.github.io/hello-world)
+
+## 💡 使用方法
+
+1. 打开网站
+2. 点击页面中央的"点击我"按钮
+3. 观看"Hello World!"文字在页面中像飘带一样飘动
+4. 动画结束后可再次点击按钮
+
+## 🛠️ 技术栈
+
+- **React 18** - 用户界面库
+- **TypeScript** - 类型安全的JavaScript
+- **Vite** - 快速的构建工具
+- **Tailwind CSS** - 实用优先的CSS框架
+- **gh-pages** - GitHub Pages部署工具
+
+## 📦 本地开发
+
+1. 克隆仓库
+   ```bash
+   git clone https://github.com/slowdown87/hello-world.git
+   cd hello-world
+   ```
+
+2. 安装依赖
+   ```bash
+   npm install
+   ```
+
+3. 启动开发服务器
+   ```bash
+   npm run dev
+   ```
+
+4. 构建生产版本
+   ```bash
+   npm run build
+   ```
+
+5. 部署到GitHub Pages
+   ```bash
+   npm run deploy
+   ```
+
+## 📁 项目结构
+
+```
+/
+├── public/              # 静态资源
+├── src/
+│   ├── components/      # React组件
+│   │   └── RibbonAnimation.tsx  # 飘带动画组件
+│   ├── App.tsx          # 主应用组件
+│   ├── main.tsx         # 应用入口
+│   └── index.css        # 全局样式
+├── package.json
+├── tailwind.config.js
+└── vite.config.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🎨 设计特点
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **主色调**：靛蓝色 (#6366f1) 和玫瑰红 (#f43f5e)
+- **按钮样式**：圆角按钮，带有悬停效果和轻微阴影
+- **动画效果**：文字会沿着圆形路径移动，带有旋转和缩放效果
+- **渐变背景**：从浅灰到稍深的灰色，营造现代感
 
-export default tseslint.config({
-  extends: [
-    // other configs...
-    // Enable lint rules for React
-    reactX.configs['recommended-typescript'],
-    // Enable lint rules for React DOM
-    reactDom.configs.recommended,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 📝 许可证
+
+MIT License
