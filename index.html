@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World 飘带动画</title>
+    <title>Hello World</title>
     <style>
         * {
             margin: 0;
@@ -77,7 +77,22 @@
             pointer-events: none;
             display: none;
             z-index: 9999;
-            animation: glow 2s ease-in-out infinite alternate;
+            animation: glow 2s ease-in-out infinite alternate, float 1s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-10px) rotate(1deg);
+            }
+            50% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            75% {
+                transform: translateY(10px) rotate(-1deg);
+            }
         }
 
         @keyframes glow {
@@ -138,13 +153,21 @@
             if (!isVisible) return;
 
             const currentTime = Date.now() / 1000;
-            const x = Math.sin(currentTime * 0.5) * (window.innerWidth / 2 - 150) + window.innerWidth / 2;
-            const y = Math.cos(currentTime * 0.5) * (window.innerHeight / 2 - 150) + window.innerHeight / 2;
-            const rotate = Math.sin(currentTime * 1) * 30;
+            // 主路径：圆形运动
+            const x = Math.sin(currentTime * 0.3) * (window.innerWidth / 2 - 150) + window.innerWidth / 2;
+            const y = Math.cos(currentTime * 0.3) * (window.innerHeight / 2 - 150) + window.innerHeight / 2;
+            
+            // 增加抖动效果
+            const jitterX = Math.sin(currentTime * 5) * 10;
+            const jitterY = Math.cos(currentTime * 4) * 8;
+            const jitterRotate = Math.sin(currentTime * 3) * 5;
+            
+            // 旋转和缩放
+            const rotate = Math.sin(currentTime * 0.8) * 30 + jitterRotate;
             const scale = 1 + Math.sin(currentTime * 0.5) * 0.2;
 
-            ribbonText.style.left = x + 'px';
-            ribbonText.style.top = y + 'px';
+            ribbonText.style.left = (x + jitterX) + 'px';
+            ribbonText.style.top = (y + jitterY) + 'px';
             ribbonText.style.transform = 'translate(-50%, -50%) rotate(' + rotate + 'deg) scale(' + scale + ')';
 
             animationFrame = requestAnimationFrame(animate);
