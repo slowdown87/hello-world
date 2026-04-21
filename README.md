@@ -1,13 +1,14 @@
 # Hello World 飘带动画网站
 
-一个简单而美观的静态网站，点击按钮后会显示飘带效果的"Hello World!"文字动画。
+一个简单而美观的纯HTML、CSS、JavaScript静态网站，点击按钮后会显示飘带效果的"Hello World!"文字动画。
 
 ## ✨ 功能特点
 
 - 🎨 现代简洁的UI设计
 - 🎭 流畅的飘带动画效果
 - 📱 响应式布局，适配不同屏幕尺寸
-- 🚀 已部署到GitHub Pages
+- 🚀 纯HTML实现，无任何框架依赖
+- 🎯 超级简单，只有一个文件
 
 ## 🚀 访问网站
 
@@ -24,54 +25,33 @@
 
 ## 🛠️ 技术栈
 
-- **React 18** - 用户界面库
-- **TypeScript** - 类型安全的JavaScript
-- **Vite** - 快速的构建工具
-- **Tailwind CSS** - 实用优先的CSS框架
-- **gh-pages** - GitHub Pages部署工具
+- **纯HTML5** - 页面结构
+- **纯CSS3** - 样式和动画
+- **纯JavaScript** - 交互逻辑
+- **无框架** - 简单直接
 
-## 📦 本地开发
+## 📦 本地使用
 
-1. 克隆仓库
+1. 克隆或下载仓库
    ```bash
    git clone https://github.com/slowdown87/hello-world.git
    cd hello-world
    ```
 
-2. 安装依赖
-   ```bash
-   npm install
+2. 直接在浏览器中打开 `index.html` 文件
    ```
-
-3. 启动开发服务器
-   ```bash
-   npm run dev
-   ```
-
-4. 构建生产版本
-   ```bash
-   npm run build
-   ```
-
-5. 部署到GitHub Pages
-   ```bash
-   npm run deploy
+   # 或者使用任何本地服务器工具
+   python -m http.server 8080
+   # 然后访问 http://localhost:8080
    ```
 
 ## 📁 项目结构
 
 ```
 /
-├── public/              # 静态资源
-├── src/
-│   ├── components/      # React组件
-│   │   └── RibbonAnimation.tsx  # 飘带动画组件
-│   ├── App.tsx          # 主应用组件
-│   ├── main.tsx         # 应用入口
-│   └── index.css        # 全局样式
-├── package.json
-├── tailwind.config.js
-└── vite.config.ts
+├── index.html    # 唯一的文件，包含HTML、CSS和JavaScript
+├── .gitignore    # Git忽略文件
+└── README.md     # 项目说明
 ```
 
 ## 🎨 设计特点
