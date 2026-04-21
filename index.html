@@ -107,9 +107,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Hello World 飘带动画</h1>
         <button class="btn" id="clickBtn">点击我</button>
-        <p class="desc">点击按钮查看Hello World飘带效果</p>
     </div>
     
     <div class="ribbon-text" id="ribbonText">Hello World!</div>
@@ -117,50 +115,39 @@
     <script>
         const btn = document.getElementById('clickBtn');
         const ribbonText = document.getElementById('ribbonText');
-        let isAnimating = false;
+        let isVisible = false;
         let animationFrame = null;
-        let startTime = 0;
-        const duration = 8000;
 
         btn.addEventListener('click', function() {
-            if (isAnimating) return;
-            
-            isAnimating = true;
-            btn.textContent = '动画中...';
-            btn.disabled = true;
-            ribbonText.style.display = 'block';
-            startTime = Date.now();
-            animate();
+            if (isVisible) {
+                // 隐藏文字
+                isVisible = false;
+                ribbonText.style.display = 'none';
+                if (animationFrame) {
+                    cancelAnimationFrame(animationFrame);
+                }
+            } else {
+                // 显示文字并开始动画
+                isVisible = true;
+                ribbonText.style.display = 'block';
+                animate();
+            }
         });
 
         function animate() {
-            const elapsed = Date.now() - startTime;
-            const progress = Math.min(elapsed / duration, 1);
+            if (!isVisible) return;
 
-            const x = Math.sin(progress * Math.PI * 2) * (window.innerWidth / 2 - 150) + window.innerWidth / 2;
-            const y = Math.cos(progress * Math.PI * 2) * (window.innerHeight / 2 - 150) + window.innerHeight / 2;
-            const rotate = Math.sin(progress * Math.PI * 4) * 30;
-            const scale = 1 + Math.sin(progress * Math.PI * 2) * 0.2;
+            const currentTime = Date.now() / 1000;
+            const x = Math.sin(currentTime * 0.5) * (window.innerWidth / 2 - 150) + window.innerWidth / 2;
+            const y = Math.cos(currentTime * 0.5) * (window.innerHeight / 2 - 150) + window.innerHeight / 2;
+            const rotate = Math.sin(currentTime * 1) * 30;
+            const scale = 1 + Math.sin(currentTime * 0.5) * 0.2;
 
             ribbonText.style.left = x + 'px';
             ribbonText.style.top = y + 'px';
             ribbonText.style.transform = 'translate(-50%, -50%) rotate(' + rotate + 'deg) scale(' + scale + ')';
 
-            if (progress < 1) {
-                animationFrame = requestAnimationFrame(animate);
-            } else {
-                stopAnimation();
-            }
-        }
-
-        function stopAnimation() {
-            isAnimating = false;
-            btn.textContent = '点击我';
-            btn.disabled = false;
-            ribbonText.style.display = 'none';
-            if (animationFrame) {
-                cancelAnimationFrame(animationFrame);
-            }
+            animationFrame = requestAnimationFrame(animate);
         }
     </script>
 </body>
