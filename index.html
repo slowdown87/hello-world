@@ -59,9 +59,18 @@
             transform: none;
         }
 
-        .desc {
+        .tutorial-link {
+            display: block;
             margin-top: 1rem;
-            color: #6b7280;
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .tutorial-link:hover {
+            color: #f43f5e;
+            text-decoration: underline;
         }
 
         .ribbon-text {
@@ -111,6 +120,7 @@
 <body>
     <div class="container">
         <button class="btn" id="clickBtn">点击我</button>
+        <a href="tutorial.html" class="tutorial-link">查看零基础教程</a>
     </div>
     
     <div class="ribbon-text" id="ribbonText">
