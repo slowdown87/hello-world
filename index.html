@@ -166,17 +166,20 @@
             // 为每个字符添加波浪动画，模拟旗帜效果
             letters.forEach((letter, index) => {
                 // 不同字符有不同的相位，形成波浪效果
-                const wavePhase = index * 0.2;
-                const waveAmplitude = 15;
-                const waveFrequency = 2;
+                const wavePhase = index * 0.4;
+                const waveAmplitude = 40;
+                const waveFrequency = 2.5;
                 
                 // 上下波浪运动
                 const yOffset = Math.sin(currentTime * waveFrequency + wavePhase) * waveAmplitude;
                 
                 // 前后摇摆效果
-                const rotateX = Math.sin(currentTime * waveFrequency + wavePhase) * 20;
+                const rotateX = Math.sin(currentTime * waveFrequency + wavePhase) * 45;
                 
-                letter.style.transform = `translateY(${yOffset}px) rotateX(${rotateX}deg)`;
+                // 左右摇摆
+                const rotateY = Math.cos(currentTime * waveFrequency + wavePhase) * 30;
+                
+                letter.style.transform = `translateY(${yOffset}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
             });
 
             ribbonText.style.left = x + 'px';
