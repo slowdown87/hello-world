@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #6366f1;
+  --secondary-color: #f43f5e;
+  --bg-color: #f9fafb;
+  --text-color: #1f2937;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+/* 自定义按钮样式 */
+.btn-primary {
+  @apply px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 bg-white text-indigo-600 hover:bg-indigo-50 hover:text-rose-500 shadow-md hover:shadow-lg hover:scale-105;
+}
+
+.btn-primary:disabled {
+  @apply bg-gray-300 text-gray-500 cursor-not-allowed hover:scale-100 hover:shadow-md;
+}
+
+/* 动画效果 */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
